@@ -1,49 +1,45 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { fetchMovies } from 'service/service';
-import { MoviesGallery } from 'components/MoviesGallery/MoviesGallery';
-// import styles from './Views.module.css';
 
-import { Outlet } from 'react-router';
+import { useSearchParams } from 'react-router-dom';
+import { searchMovies } from 'service/service';
+import { MoviesGallery } from 'components/MoviesGallery/MoviesGallery';
+import { SearchForm } from 'components/SearchForm/SearchForm';
+
+const STATUS = {
+  Idle: 'idle',
+  Loading: 'loading',
+  Error: 'error',
+  Success: 'success',
+};
 
 export default function MoviesView() {
-  const [movies, setMovies] = useState(null);
-  const [moviesList, setMoviesList] = useState([]);
-  //   useEffect(() => {
-  //     if (moviesList.length === 0) fetchMovies().then(setMoviesList);
-  //   }, [moviesList]);
+  const [status, setStatus] = useState(STATUS.Idle);
+  const [movies, setMovies] = useState([]);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const handleSubmit = query => {
+    setSearchParams({ query });
+    return;
+  };
+
+  const query = searchParams.get('query');
 
   useEffect(() => {
-    //  if (moviesList.length === 0)
-    fetchMovies().then(({ data }) => setMovies(data));
-  }, []);
+    console.log(query);
+    if (query) {
+      searchMovies(query)
+        .then(({ data }) => setMovies(data.results))
+        .catch(() => {
+          setStatus(STATUS.Error);
+        });
+    }
+  }, [query]);
+  console.log(movies);
 
   return (
     <>
-      <ul>
-        {movies &&
-          movies.results.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}> {movie.title}</Link>
-            </li>
-          ))}
-      </ul>
-      ;
-      {/* <MoviesGallery movies={movies} />
-      <Outlet /> */}
+      <SearchForm onSubmit={handleSubmit} />
+      <MoviesGallery movies={movies} />
     </>
   );
 }
-
-// useEffect(() => {
-//   fetchMovies().then(({ data }) => setMovies(data));
-// }, []);
-
-// <ul>
-//   {movies &&
-//     movies.results.map(movie => (
-//       <li key={movie.id}>
-//         <Link to={`/movies/${movie.id}`}> {movie.title}</Link>
-//       </li>
-//     ))}
-// </ul>;

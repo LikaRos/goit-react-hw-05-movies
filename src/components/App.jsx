@@ -5,9 +5,8 @@ import { HomeView } from 'views/HomeView';
 import MoviesView from 'views/MoviesView';
 import { DetailsView } from 'views/DetailsView';
 
-// import { Cast } from 'views/Cast';
-// import { Review } from 'views/Review';
-
+import { Cast } from './Cast/Cast';
+import { Reviews } from './Reviews/Reviews';
 export const App = () => {
   return (
     <Routes>
@@ -15,8 +14,8 @@ export const App = () => {
         <Route index element={<HomeView />} />
         <Route path="movies" element={<MoviesView />} />
         <Route path="movies/:movieId" element={<DetailsView />}>
-          {/* <Route path="cast" element={<Cast />} /> */}
-          {/* <Route path="review" element={<Review />} /> */}
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
       </Route>
     </Routes>
