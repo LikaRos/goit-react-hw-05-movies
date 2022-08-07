@@ -1,4 +1,3 @@
-// import { service } from 'service/service';
 import { Layout } from './Layout/Layout';
 import { Routes, Route } from 'react-router';
 import { HomeView } from 'views/HomeView';

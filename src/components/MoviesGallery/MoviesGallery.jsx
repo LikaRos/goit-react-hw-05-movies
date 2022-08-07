@@ -1,14 +1,12 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
-// import styles from './MoviesGallery.module.css';
+import styles from './MoviesGallery.module.css';
 
 export const MoviesGallery = ({ movies }) => {
-  const location = useLocation();
-
   return (
     <>
-      <ul>
+      <ul className={styles.list}>
         {movies === null ? (
           <p>Movie is not found</p>
         ) : (

@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { searchMovies } from 'service/service';
 import { MoviesGallery } from 'components/MoviesGallery/MoviesGallery';
 import { SearchForm } from 'components/SearchForm/SearchForm';
+// import styles from 'views/Views.module.css';
 
 const STATUS = {
   Idle: 'idle',
@@ -35,11 +36,12 @@ export default function MoviesView() {
     }
   }, [query]);
   console.log(movies);
-
-  return (
-    <>
-      <SearchForm onSubmit={handleSubmit} />
-      <MoviesGallery movies={movies} />
-    </>
-  );
+  if (status) {
+    return (
+      <>
+        <SearchForm onSubmit={handleSubmit} />
+        <MoviesGallery movies={movies} />
+      </>
+    );
+  }
 }

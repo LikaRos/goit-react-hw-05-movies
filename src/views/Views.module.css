@@ -70,3 +70,8 @@
 .link:focus {
   color: #0000ff;
 }
+
+.list {
+  margin-bottom: 20px;
+  list-style: none;
+}

@@ -1,4 +1,4 @@
-import styles from 'views/Views.module.css';
+import styles from './Reviews.module.css';
 import { useState, useEffect } from 'react';
 import { fetchReviewsMovies } from 'service/service';
 import { useParams } from 'react-router-dom';
@@ -17,8 +17,8 @@ export const Reviews = () => {
       {reviews.length ? (
         reviews.map(review => (
           <li key={review.id}>
-            <h2>Content</h2>
-            <p>{review.content}</p>
+            <h2 className={styles.title}>Content</h2>
+            <p className={styles.text}>{review.content}</p>
             <img
               src={
                 review.avatar_path &&
@@ -26,8 +26,9 @@ export const Reviews = () => {
               }
               alt={`${review.title} portrait`}
               className={styles.img}
-            />{' '}
-            <h3>{review.name}</h3>{' '}
+            />
+
+            <b className={styles.title}>{review.author}</b>
           </li>
         ))
       ) : (
