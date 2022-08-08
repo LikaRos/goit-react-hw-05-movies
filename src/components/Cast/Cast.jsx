@@ -1,7 +1,7 @@
 import styles from './Cast.module.css';
 import { useState, useEffect } from 'react';
 import { fetchCastMovies } from 'service/service';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 // import { useLocation, useNavigate, NavLink, Outlet } from 'react-router-dom';
 
 export const Cast = () => {
@@ -17,7 +17,7 @@ export const Cast = () => {
       {actors.length ? (
         actors.map(actor => (
           <li className={styles.item} key={actor.id}>
-            {' '}
+            <Link to={`cast`}>{actor.name}</Link>
             <img
               src={
                 actor.profile_path &&

@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import styles from './MoviesGallery.module.css';
 
 export const MoviesGallery = ({ movies }) => {
+  const location = useLocation();
   return (
     <>
       <ul className={styles.list}>
@@ -12,7 +13,12 @@ export const MoviesGallery = ({ movies }) => {
         ) : (
           movies.map(movie => (
             <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}> {movie.title}</Link>
+              <Link
+                to={`/goit-react-hw-05-movies/movies/${movie.id}`}
+                state={{ from: location }}
+              >
+                {movie.title}
+              </Link>
             </li>
           ))
         )}

@@ -8,7 +8,7 @@ const Navigation = () => {
       <ul>
         <li>
           <NavLink
-            to="/"
+            to="/goit-react-hw-05-movies"
             state={location}
             className={({ isActive }) =>
               isActive ? styles.linkActive : styles.link
@@ -20,7 +20,7 @@ const Navigation = () => {
 
         <li>
           <NavLink
-            to="/movies"
+            to="/goit-react-hw-05-movies/movies"
             state={location}
             className={({ isActive }) =>
               isActive ? styles.linkActive : styles.link

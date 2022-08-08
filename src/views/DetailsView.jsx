@@ -21,7 +21,9 @@ export const DetailsView = () => {
           <div className={styles.button_list}>
             <button
               type="button"
-              onClick={() => navigate(location?.state?.from ?? '/')}
+              onClick={() =>
+                navigate(location?.state?.from ?? '/goit-react-hw-05-movies')
+              }
               className={styles.button}
             >
               Go back
@@ -47,16 +49,13 @@ export const DetailsView = () => {
             {movie.genres?.map(genres => genres.name).join(' , ')}
           </p>
 
-          <NavLink
-            state={{ from: location?.state?.from ?? '/' }}
-            to={`/movies/${movieId}/cast`}
-          >
+          <NavLink state={{ from: location?.state?.from ?? '/' }} to={`cast`}>
             <p className={styles.link}>Cast</p>
           </NavLink>
 
           <NavLink
             state={{ from: location?.state?.from ?? '/' }}
-            to={`/movies/${movieId}/reviews`}
+            to={`reviews`}
           >
             <p className={styles.link}>Reviews</p>
           </NavLink>
