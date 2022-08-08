@@ -11,6 +11,7 @@ const STATUS = {
 export const HomeView = () => {
   const [status, setStatus] = useState(STATUS.Idle);
   const [movies, setMovies] = useState([]);
+
   useEffect(() => {
     fetchMovies()
       .then(({ data }) => setMovies(data.results))
@@ -18,12 +19,14 @@ export const HomeView = () => {
         setStatus(STATUS.Error);
       });
   }, []);
-  return (
-    <>
-      <h1> welcome to MOVIES</h1>;
-      <MoviesGallery movies={movies} />
-    </>
-  );
+  if (status) {
+    return (
+      <>
+        <h1> welcome to MOVIES</h1>;
+        <MoviesGallery movies={movies} />
+      </>
+    );
+  }
 };
 
 export default HomeView;

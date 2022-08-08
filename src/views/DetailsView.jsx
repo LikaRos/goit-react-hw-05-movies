@@ -1,16 +1,10 @@
-import {
-  useParams,
-  useLocation,
-  useNavigate,
-  NavLink,
-  Outlet,
-} from 'react-router-dom';
+import { useLocation, useNavigate, NavLink, Outlet } from 'react-router-dom';
 import { useFetchById } from 'hooks/fetchById';
 import styles from 'views/Views.module.css';
 
 export const DetailsView = () => {
   const location = useLocation();
-  const { movieId } = useParams();
+
   const navigate = useNavigate();
   const movie = useFetchById();
 
