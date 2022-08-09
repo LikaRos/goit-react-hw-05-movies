@@ -12,8 +12,11 @@ export function SearchForm({ onSubmit }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    onSubmit(query);
+    if (query === '') {
+      return;
+    } else {
+      onSubmit(query);
+    }
     setQuery('');
   };
   return (
