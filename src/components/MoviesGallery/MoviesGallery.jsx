@@ -1,14 +1,17 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import styles from './MoviesGallery.module.css';
 
 export const MoviesGallery = ({ movies }) => {
   const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const query = searchParams.get('query');
   return (
     <>
       <ul className={styles.list}>
-        {movies === null ? (
+        {movies.length === 0 && query ? (
           <p>Movie is not found</p>
         ) : (
           movies.map(movie => (

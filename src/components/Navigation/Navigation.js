@@ -5,7 +5,7 @@ const Navigation = () => {
   const location = useLocation();
   return (
     <nav>
-      <ul>
+      <ul >
         <li>
           <NavLink
             to="/goit-react-hw-05-movies"

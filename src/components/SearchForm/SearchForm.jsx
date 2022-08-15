@@ -13,7 +13,7 @@ export function SearchForm({ onSubmit }) {
   const handleSubmit = e => {
     e.preventDefault();
     if (query === '') {
-      return;
+      alert('Enter the movie name');
     } else {
       onSubmit(query);
     }
