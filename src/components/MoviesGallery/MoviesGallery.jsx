@@ -5,7 +5,7 @@ import styles from './MoviesGallery.module.css';
 
 export const MoviesGallery = ({ movies }) => {
   const location = useLocation();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const query = searchParams.get('query');
   return (
